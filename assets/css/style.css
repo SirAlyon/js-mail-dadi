@@ -8,3 +8,32 @@
     font-weight: bold;
 }
 
+.mail-animation{
+    animation-name: mail;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    opacity: 0;
+}
+
+@keyframes mail {
+    0% {
+        opacity: 1;
+    }
+    20% {
+        opacity: 0.80;
+    }
+
+    40% {
+        opacity: 0.6;
+    }
+
+    60% {
+        opacity: 0.40;
+    }
+    80% {
+        opacity: 0.20;
+    }
+    100% {
+        opacity: 0;
+    }
+}

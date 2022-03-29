@@ -22,13 +22,12 @@ submit.addEventListener('click', function(){
 
     if (success == true){
         const emailResult = document.getElementById('emailresult')
-        emailResult.insertAdjacentHTML('beforeend', `<div class="result">La tua Mail è corretta!</div>`)
+        emailResult.innerHTML = `<div class="result">La tua Mail è corretta!</div>`
         submit.disabled = true; 
         console.log('La tua mail è corretta!')
     } else {
         const emailResult = document.getElementById('emailresult')
-        emailResult.insertAdjacentHTML('beforeend', `<div class="result">Per favore inserisci una mail valida!</div>`)
-        submit.disabled = true; 
+        emailResult.innerHTML = `<div class="result mail-animation">Per favore inserisci una mail valida!</div>`
         console.log('Per favore inserisci una mail valida!')
     }
 })
