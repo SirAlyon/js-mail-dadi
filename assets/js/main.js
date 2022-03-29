@@ -1,26 +1,40 @@
 /* Generare un numero random da 1 a 6, sia per il giocatore sia per il computer. Stabilire il vincitore, in base a chi fa il punteggio più alto.
 Prima di partire a scrivere codice poniamoci qualche domanda: Che ci sia un array da qualche parte? Se dobbiamo confrontare qualcosa che "cosa" ci serve? */
 
+/* Inizio Gioco Mail */
 
 const emailList = ['alessio@boolean.it', 'boolean@boolean.it', 'arrays-es@boolean.it'] 
 //Forse non ho capito la consegna dell'esercizio sulla parte della mail (?)
 
 //chiedo all'utente di inserira una mail e ne salvo i dati al click del button
 
-const playNow = document.getElementById('playNow')
-playNow.addEventListener('click', function(){
+const submit = document.getElementById('submit')
+submit.addEventListener('click', function(){
     const userEmail = document.getElementById('userEmail').value
+
+    let success = false
+
     for (let i=0; i < emailList.length; i++){
         if (userEmail == emailList[i]){
-            console.log('Ok! Iniziamo a giocare :)')
-        } else {
-            console.log('Per favore inserisci una mail valida per iniziare a giocare!')
+             success = true
         }
+    }
+
+    if (success == true){
+        const emailResult = document.getElementById('emailresult')
+        emailResult.insertAdjacentHTML('beforeend', `<div class="emailresult">La tua Mail è corretta!</div>`)
+        submit.disabled = true; 
+        console.log('La tua mail è corretta!')
+    } else {
+        const emailResult = document.getElementById('emailresult')
+        emailResult.insertAdjacentHTML('beforeend', `<div class="emailresult">Per favore inserisci una mail valida!</div>`)
+        submit.disabled = true; 
+        console.log('Per favore inserisci una mail valida!')
     }
 })
 
 
-
+/* Inizio Gioco Dadi */
 
 const result = document.getElementById('result')
 result.addEventListener('click', function(){
