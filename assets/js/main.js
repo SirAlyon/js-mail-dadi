@@ -22,12 +22,12 @@ submit.addEventListener('click', function(){
 
     if (success == true){
         const emailResult = document.getElementById('emailresult')
-        emailResult.insertAdjacentHTML('beforeend', `<div class="emailresult">La tua Mail è corretta!</div>`)
+        emailResult.insertAdjacentHTML('beforeend', `<div class="result">La tua Mail è corretta!</div>`)
         submit.disabled = true; 
         console.log('La tua mail è corretta!')
     } else {
         const emailResult = document.getElementById('emailresult')
-        emailResult.insertAdjacentHTML('beforeend', `<div class="emailresult">Per favore inserisci una mail valida!</div>`)
+        emailResult.insertAdjacentHTML('beforeend', `<div class="result">Per favore inserisci una mail valida!</div>`)
         submit.disabled = true; 
         console.log('Per favore inserisci una mail valida!')
     }
@@ -36,23 +36,47 @@ submit.addEventListener('click', function(){
 
 /* Inizio Gioco Dadi */
 
-const result = document.getElementById('result')
-result.addEventListener('click', function(){
+/* let diceUser = document.getElementById('diceresult')
+let dicePC = document.getElementById('diceresult')
+let diceResult = document.getElementById('diceresult')
+ */
+const game = document.getElementById('game')
+game.addEventListener('click', function(){
     let userNumber = Math.floor(Math.random () *6) +1;
     let pcNumber = Math.floor(Math.random () *6) +1;
+
+    let diceUser = document.getElementById('diceresult')
+    diceUser.insertAdjacentHTML('beforeend', `<span>Il tuo numero: ${userNumber}</span>`)
     console.log(`Il tuo numero: ${userNumber}`)
+    
+    let dicePC = document.getElementById('diceresult')
+    dicePC.insertAdjacentHTML('beforeend', `<span>Il numero del pc: ${pcNumber}</span>`)
     console.log(`Il numero del pc: ${pcNumber}`)
+
     if (userNumber > pcNumber){
+        let diceResult = document.getElementById('diceresult')
+        diceResult.insertAdjacentHTML('beforeend', `<span class="result">Complimenti! Hai vinto!</span>`)
         console.log('Complimenti! Hai vinto!')
     } else if (userNumber < pcNumber){
+        let diceResult = document.getElementById('diceresult')
+        diceResult.insertAdjacentHTML('beforeend', `<span class="result">Mi dispiace! Hai perso!</span>`)
         console.log('Mi dispiace! Hai perso!')
     } else if (userNumber == pcNumber){
+        let diceResult = document.getElementById('diceresult')
+        diceResult.insertAdjacentHTML('beforeend', `<span class="result">Pareggio! Tira un altro dado</span>`)
         console.log('Pareggio! Tira un altro dado')
     }
-    result.disabled = true; 
+    game.disabled = true; 
 });
 
 const redo = document.getElementById('redo')
 redo.addEventListener('click', function(){
-    result.disabled = false; 
+    game.disabled = false; 
+})
+
+const clear = document.getElementById('clear')
+clear.addEventListener('click', function(){
+    let diceResult = document.getElementById('diceresult')
+    diceResult.innerHTML = ""
+    game.disabled = false; 
 })
